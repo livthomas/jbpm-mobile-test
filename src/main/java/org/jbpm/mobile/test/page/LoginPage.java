@@ -1,7 +1,6 @@
 package org.jbpm.mobile.test.page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.jbpm.mobile.test.ElementPicker;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -14,10 +13,10 @@ public class LoginPage {
     private final WebElement passwordField;
     private final WebElement signInButton;
 
-    public LoginPage(WebDriver driver) {
-        userNameField = driver.findElement(By.xpath("//input[@name='j_username']"));
-        passwordField = driver.findElement(By.xpath("//input[@name='j_password']"));
-        signInButton = driver.findElement(By.cssSelector("input.button"));
+    public LoginPage(ElementPicker picker) {
+        userNameField = picker.findElementByAttribute("input", "name", "j_username");
+        passwordField = picker.findElementByAttribute("input", "name", "j_password");
+        signInButton = picker.findElementByClass("input", "button");
     }
 
     public WebElement getUserNameInput() {

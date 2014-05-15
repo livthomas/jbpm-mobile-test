@@ -22,7 +22,7 @@ public abstract class MobileTestBase {
 
     protected WebDriver driver;
 
-    private static final String IP_ADDRESS = "147.251.233.65";
+    private static final String IP_ADDRESS = "147.251.236.6";
     private static final String APP_URL = "http://" + IP_ADDRESS + ":8080/jbpm-console-ng-jboss-as7.0/"
             + "org.jbpm.console.ng.jBPMShowcase/jBPM.html?standalone=true&perspective=MobilePresenter";
 
@@ -49,7 +49,7 @@ public abstract class MobileTestBase {
 
         ElementPicker picker = new ElementPicker(driver);
 
-        new LoginPage(driver).signIn(USERNAME, PASSWORD);
+        new LoginPage(picker).signIn(USERNAME, PASSWORD);
 
         // wait while loading page
         picker.findElementByText("div", "jBPM Mobile");
