@@ -62,16 +62,16 @@ public class ElementPicker {
                 By.xpath("//li/div[contains(div/text(), '" + label + "')]/div/" + tag)));
     }
 
+    public WebElement findFormElementByLabel(String label) {
+        return findFormElementByLabel("div", label);
+    }
+
     public WebElement findFormInputByLabel(String label) {
         return findFormElementByLabel("div/input", label);
     }
 
     public WebElement findFormTextareaByLabel(String label) {
         return findFormElementByLabel("div/textarea", label);
-    }
-
-    public WebElement findFormButtonByLabel(String label) {
-        return findFormElementByLabel("div", label);
     }
 
     public void confirmSuccessPopup() {

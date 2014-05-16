@@ -34,7 +34,7 @@ public class DetailsTab {
 
         processInstanceIdField = picker.findFormInputByLabel("Process Instance Id");
         processDefinitionIdField = picker.findFormInputByLabel("Process Definition Id");
-        processInstanceDetailsButton = picker.findFormButtonByLabel("Process Instance Details");
+        processInstanceDetailsButton = picker.findFormElementByLabel("Process Instance Details");
 
         updateButton = picker.findElementByText("div", "Update");
     }

@@ -2,6 +2,8 @@ package org.jbpm.mobile.test.page.task;
 
 import org.jbpm.mobile.test.ElementPicker;
 import org.jbpm.mobile.test.page.AbstractPage;
+import org.jbpm.mobile.test.page.task.details.AssignmentsTab;
+import org.jbpm.mobile.test.page.task.details.DetailsTab;
 import org.jbpm.mobile.test.page.task.details.WorkTab;
 import org.openqa.selenium.WebElement;
 
@@ -27,12 +29,14 @@ public class TaskDetailsPage extends AbstractPage {
         return new WorkTab(picker);
     }
 
-    public void switchToDetailsTab() {
+    public DetailsTab switchToDetailsTab() {
         detailsTabLink.click();
+        return new DetailsTab(picker);
     }
 
-    public void switchToAssignmentsTab() {
+    public AssignmentsTab switchToAssignmentsTab() {
         assignmentsTabLink.click();
+        return new AssignmentsTab(picker);
     }
 
 }
