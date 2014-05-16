@@ -49,4 +49,9 @@ public class ElementPicker {
         return driver.findElements(By.xpath(sb.toString()));
     }
 
+    public WebElement findInputByLabel(String label) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li/div[contains(div/text(), '"
+                + label + "')]/div/div/input")));
+    }
+
 }

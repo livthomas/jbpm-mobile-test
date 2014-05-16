@@ -33,8 +33,18 @@ public class TasksListPage extends AbstractPage {
         picker.findElementByText("ul/li/div", taskId + " : " + taskName).click();
     }
 
-    public void goToNewTask() {
+    public NewTaskPage goToNewTask() {
         newTaskButton.click();
+        return new NewTaskPage(picker);
+    }
+
+    public boolean isPresentInList(String taskName) {
+        for (WebElement row : tasks) {
+            if (row.getText().contains(taskName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
