@@ -17,8 +17,8 @@ public class TasksListPage extends AbstractPage {
 
     public TasksListPage(ElementPicker picker) {
         super(picker);
-        tasks = picker.findElementsByHierarchy("ul", "li", "div");
-        newTaskButton = picker.findElementByText("p", "New task");
+        tasks = picker.findListItems();
+        newTaskButton = picker.findHeaderButton("New task");
     }
 
     public List<WebElement> getTasks() {
@@ -29,8 +29,14 @@ public class TasksListPage extends AbstractPage {
         return newTaskButton;
     }
 
-    public void goToDetails(String taskId, String taskName) {
-        picker.findElementByText("ul/li/div", taskId + " : " + taskName).click();
+    public TaskDetailsPage goToDetails(String taskName) {
+        picker.findListItem(taskName).click();
+        return new TaskDetailsPage(picker);
+    }
+
+    public TaskDetailsPage goToDetails(String taskId, String taskName) {
+        picker.findListItem(taskId + " : " + taskName).click();
+        return new TaskDetailsPage(picker);
     }
 
     public NewTaskPage goToNewTask() {

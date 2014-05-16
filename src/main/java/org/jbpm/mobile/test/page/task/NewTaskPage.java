@@ -16,8 +16,8 @@ public class NewTaskPage extends AbstractPage {
 
     public NewTaskPage(ElementPicker picker) {
         super(picker);
-        taskNameField = picker.findInputByLabel("Task Name");
-        addButton = picker.findElementByText("div", "Add");
+        taskNameField = picker.findFormInputByLabel("Task Name");
+        addButton = picker.findButton("Add");
     }
 
     public WebElement getTaskNameField() {

@@ -15,7 +15,7 @@ public class InstancesListPage extends AbstractPage {
 
     public InstancesListPage(ElementPicker picker) {
         super(picker);
-        instances = picker.findElementsByHierarchy("ul", "li", "div");
+        instances = picker.findListItems();
     }
 
     public List<WebElement> getInstances() {
@@ -23,7 +23,7 @@ public class InstancesListPage extends AbstractPage {
     }
 
     public void goToDetails(String instanceId, String processId) {
-        picker.findElementByText("ul/li/div", instanceId + " : " + processId).click();
+        picker.findListItem(instanceId + " : " + processId).click();
     }
 
 }

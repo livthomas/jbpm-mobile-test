@@ -19,9 +19,9 @@ public class HomePage extends AbstractPage {
     public HomePage(ElementPicker picker) {
         super(picker);
 
-        processDefinitionsLink = picker.findElementByText("div", "Process Definitions");
-        processInstancesLink = picker.findElementByText("div", "Process Instances");
-        tasksListLink = picker.findElementByText("div", "Tasks List");
+        processDefinitionsLink = picker.findListItem("Process Definitions");
+        processInstancesLink = picker.findListItem("Process Instances");
+        tasksListLink = picker.findListItem("Tasks List");
     }
 
     public DefinitionsListPage goToProcessDefinitions() {

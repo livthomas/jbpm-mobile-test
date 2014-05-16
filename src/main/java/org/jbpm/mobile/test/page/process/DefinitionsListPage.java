@@ -15,7 +15,7 @@ public class DefinitionsListPage extends AbstractPage {
 
     public DefinitionsListPage(ElementPicker picker) {
         super(picker);
-        definitions = picker.findElementsByHierarchy("ul", "li", "div");
+        definitions = picker.findListItems();
     }
 
     public List<WebElement> getDefinitions() {
@@ -23,7 +23,7 @@ public class DefinitionsListPage extends AbstractPage {
     }
 
     public void goToDetails(String processId, String version) {
-        picker.findElementByText("ul/li/div", processId + " : " + version).click();
+        picker.findListItem(processId + " : " + version).click();
     }
 
 }

@@ -27,31 +27,56 @@ public class ElementPicker {
     }
 
     public WebElement findElementByAttribute(String tag, String attributeName, String attributeValue) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//" + tag + "[@" + attributeName
-                + "='" + attributeValue + "']")));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//" + tag + "[@" + attributeName + "='" + attributeValue + "']")));
     }
 
     public WebElement findElementByClass(String tag, String className) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(tag + "." + className)));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//" + tag + "[contains(@class,'" + className + "')]")));
     }
 
     public WebElement findElementByText(String tag, String text) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//" + tag + "[contains(text(),'"
-                + text + "')]")));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//" + tag + "[contains(text(),'" + text + "')]")));
     }
 
-    public List<WebElement> findElementsByHierarchy(String... tags) {
-        StringBuilder sb = new StringBuilder("/");
-        for (String tag : tags) {
-            sb.append("/");
-            sb.append(tag);
-        }
-        return driver.findElements(By.xpath(sb.toString()));
+    public WebElement findButton(String text) {
+        return findElementByText("div", text);
     }
 
-    public WebElement findInputByLabel(String label) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li/div[contains(div/text(), '"
-                + label + "')]/div/div/input")));
+    public WebElement findHeaderButton(String text) {
+        return findElementByText("p", text);
+    }
+
+    public List<WebElement> findListItems() {
+        return driver.findElements(By.xpath("//ul/li/div"));
+    }
+
+    public WebElement findListItem(String text) {
+        return findElementByText("ul/li/div", text);
+    }
+
+    public WebElement findFormElementByLabel(String tag, String label) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//li/div[contains(div/text(), '" + label + "')]/div/" + tag)));
+    }
+
+    public WebElement findFormInputByLabel(String label) {
+        return findFormElementByLabel("div/input", label);
+    }
+
+    public WebElement findFormTextareaByLabel(String label) {
+        return findFormElementByLabel("div/textarea", label);
+    }
+
+    public WebElement findFormButtonByLabel(String label) {
+        return findFormElementByLabel("div", label);
+    }
+
+    public void confirmSuccessPopup() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[contains(div/text(),'Success')]/div/div[contains(text(),'Ok')]"))).click();
     }
 
 }

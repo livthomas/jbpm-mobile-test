@@ -12,14 +12,13 @@ import org.junit.Test;
  */
 public class NewTaskTest extends MobileTestBase {
 
-    private final static String TASK_NAME = "Special Ad-hoc Task";
-
     @Test
     public void testAddingNewAdhocTask() {
+        String taskName = Double.toHexString(Math.random());
         NewTaskPage ntp = homePage.goToTasksList().goToNewTask();
-        ntp.fillInTaskNameField(TASK_NAME);
+        ntp.fillInTaskNameField(taskName);
         TasksListPage tlp = ntp.clickAddButton();
-        Assert.assertTrue("New task is not present in the tasks list!", tlp.isPresentInList(TASK_NAME));
+        Assert.assertTrue("New task is not present in the tasks list!", tlp.isPresentInList(taskName));
     }
 
 }
