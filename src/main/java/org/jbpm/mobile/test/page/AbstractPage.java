@@ -19,7 +19,7 @@ public abstract class AbstractPage {
         return picker.findHeaderButton("Back");
     }
 
-    public void goBack() {
+    public void clickBackButton() {
         getBackButton().click();
     }
 

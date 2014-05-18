@@ -3,6 +3,7 @@ package org.jbpm.mobile.test.page.task;
 import java.util.List;
 import org.jbpm.mobile.test.ElementPicker;
 import org.jbpm.mobile.test.page.AbstractPage;
+import org.jbpm.mobile.test.page.HomePage;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -42,6 +43,11 @@ public class TasksListPage extends AbstractPage {
     public NewTaskPage goToNewTask() {
         newTaskButton.click();
         return new NewTaskPage(picker);
+    }
+
+    public HomePage goBack() {
+        clickBackButton();
+        return new HomePage(picker);
     }
 
     public boolean isPresentInList(String taskName) {
